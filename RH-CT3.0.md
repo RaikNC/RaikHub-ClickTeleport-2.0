@@ -5,6 +5,7 @@ local CloseButton = Instance.new("TextButton")
 local ClickTPButton = Instance.new("TextButton")
 local DuplicateButton = Instance.new("TextButton")
 local OpenButton = Instance.new("TextButton")
+local Title = Instance.new("TextLabel")
 
 -- Propriedades do ScreenGui
 ScreenGui.Name = "MenuGui"
@@ -16,6 +17,22 @@ MainFrame.Parent = ScreenGui
 MainFrame.BackgroundColor3 = Color3.new(1, 1, 1)
 MainFrame.Size = UDim2.new(0, 300, 0, 200)
 MainFrame.Position = UDim2.new(0.5, -150, 0.5, -100)
+
+-- Propriedades do Title
+Title.Name = "Title"
+Title.Parent = MainFrame
+Title.Text = "RaikHub | ClickTP 3.0"
+Title.Size = UDim2.new(0, 300, 0, 50)
+Title.Position = UDim2.new(0.5, -150, 0, 10)
+Title.TextColor3 = Color3.new(1, 0, 0)
+
+-- Função para mudar a cor do título
+spawn(function()
+    while true do
+        Title.TextColor3 = Color3.new(math.random(), math.random(), math.random())
+        wait(0.5)
+    end
+end)
 
 -- Propriedades do CloseButton
 CloseButton.Name = "CloseButton"
@@ -76,7 +93,7 @@ ClickTPButton.MouseButton1Click:Connect(function()
 end)
 
 -- Função de teleporte
-teleportTool.Activated:Connect(function()
+teleportTool.Equipped:Connect(function()
     local mouse = game.Players.LocalPlayer:GetMouse()
     mouse.Button1Down:Connect(function()
         if clickTPActive then
