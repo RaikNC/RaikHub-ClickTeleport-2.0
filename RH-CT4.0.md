@@ -9,7 +9,7 @@ local Title = Instance.new("TextLabel")
 
 -- Propriedades do ScreenGui
 ScreenGui.Name = "MenuGui"
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.Parent = game.CoreGui
 
 -- Propriedades do MainFrame
 MainFrame.Name = "MainFrame"
@@ -97,7 +97,7 @@ teleportTool.Equipped:Connect(function()
     local mouse = game.Players.LocalPlayer:GetMouse()
     mouse.Button1Down:Connect(function()
         if clickTPActive then
-            game.Players.LocalPlayer.Character:MoveTo(mouse.Hit.p)
+            game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(CFrame.new(mouse.Hit.p))
         end
     end)
 end)
